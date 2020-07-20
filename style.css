@@ -1,0 +1,65 @@
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.btn-group button {
+  background-color: #9AC8FD  ; /* Green background */
+  border: 1px solid #9AC8FD  ; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  color: yellow;
+}
+
+/* input[type = "submit"]:hover { 
+  color: rgb(0, 162, 232);
+} */
+
+
+/* body {
+    padding: 0;
+    margin: 0;
+    background: #f2f6e9;
+  }
+  /*--- navigation bar ---*/
+  /* .navbar {
+    background:#6ab446;
+  }
+  .nav-link,
+  .navbar-brand {
+    color: #fff;
+    cursor: pointer;
+  }
+  .nav-link {
+    margin-right: 1em !important;
+  }
+  .nav-link:hover {
+    color: #000;
+  }
+  .navbar-collapse {
+    justify-content: flex-end;
+  } */ 
