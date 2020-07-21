@@ -1,3 +1,7 @@
+window.onload = function() {
+  console.log("I AM READING THE SCRIPT");
+ document.getElementById('bodytext').innerHTML = "I AM READING THE SCRIPT";
+};
 (function(){
     // Functions
     function buildQuiz(){

@@ -154,6 +154,8 @@ app.use("*",function(req,res){
   res.sendFile(path + "404.html");
 });
 
+app.use(express.static('freethemcat'))
+
 app.listen(3000,function(){
   console.log("Live at Port 3000");
 });
