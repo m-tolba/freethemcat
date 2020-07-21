@@ -11,15 +11,26 @@
   * {
     box-sizing: border-box;
   }
-  
+  html {
+    background-color: #006bb3;
+  }
+  body {
+    background-color: #006bb3;
+    height: 95%;
+    width: 100%;
+
+  }
   /* Create two equal columns that floats next to each other */
   .column {
     float: left;
     width: 47%;
     padding: 30px;
-    height: 600px; /* Should be removed. Only for demonstration */
+    height: 100%;
+    /* height: 600px; Should be removed. Only for demonstration */
     margin-top: 0px;
     padding-top: 0px;
+    padding-bottom: 5%;
+    overflow: hidden;
   }
   /* .column2 {
     float: left;
@@ -29,7 +40,9 @@
     /* margin-top: 0px;
     padding-top: 0px;
   }  */
-  
+  .row {
+    height: 90%;
+  }
   /* Clear floats after the columns */
   .row:after {
     content: "";
@@ -46,130 +59,186 @@
   cursor: pointer; /* Pointer/hand icon */
   float: left; /* Float the buttons side by side */
   border-bottom: 2px solid white;
-}
+  }
 
-.btn-group button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
-}
+  .btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
 
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
-}
+  /* Clear floats (clearfix hack) */
+  .btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 
-/* Add a background color on hover */
-.btn-group button:hover {
-  color: yellow;
-}
-#main {
-  width: 100%;
-}
-h1 {
-  background-color:#006bb3;
-  color: white; 
-  font-size: 15px; 
-  padding-left:10px; 
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 0%;
-  display: inline-block;
-  width: 80%;
-  margin-bottom: 0px;
-  border-bottom: 2px solid white;
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    color: yellow;
+  }
+  #main {
+    width: 100%;
+  }
+  h1 {
+    background-color:#006bb3;
+    color: white; 
+    font-size: 15px; 
+    padding-left:10px; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 0%;
+    display: inline-block;
+    width: 80%;
+    margin-bottom: 0px;
+    border-bottom: 2px solid white;
 
-}
-.timer {
-  float: right;
-  background-color:#006bb3;
-  color: white; 
-  font-size: 15px; 
-  padding-left:10px; 
-  padding-top: 9px;
-  padding-bottom: 6px;
-  margin-top: 0%;
-  display: inline-block;
-  width: 20%;
-  border-left: 0px;
-  border-top: 0px;
-  border-right: 0px;
-  border-bottom: 2px solid white;
-}
-.column2 {
-  background-color: white;
-  float: left;
-  width: 47%;
-  padding: 30px;
-  height: 600px; /* Should be removed. Only for demonstration */
-  margin-top: 0px;
-  padding-top: 0px;
-  margin-bottom: 2%;
-}
+  }
+  .timer {
+    float: right;
+    background-color:#006bb3;
+    color: white; 
+    font-size: 15px; 
+    padding-left:10px; 
+    padding-top: 9px;
+    padding-bottom: 6px;
+    margin-top: 0%;
+    display: inline-block;
+    width: 20%;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 2px solid white;
+  }
+  .column2 {
+    background-color: white;
+    float: left;
+    width: 47%;
+    padding: 30px;
+    height: 100%;
+    /* height: 600px; Should be removed. Only for demonstration */
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: 2%;
+    
+  }
 
-h3{
-  font-weight: 300;
-  margin: 0px;
-  padding: 10px;
-  font-size: 20px;
-  background-color: #444;
-  color: #fff;
-}
-.question{
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-.answers {
-  margin-bottom: 20px;
-  text-align: left;
-  display: inline-block;
-}
-.answers label{
-  display: block;
-  margin-bottom: 10px;
-}
-#previous, #next, #submit{
-  font-family: 'Work Sans', sans-serif;
-	font-size: 22px;
-	background-color: #279;
-	color: #fff;
-	border: 0px;
-	border-radius: 3px;
-	padding: 20px;
-	cursor: pointer;
-	margin-bottom: 20px;
-}
-button:hover{
-	background-color: #38a;
-}
+  h3{
+    font-weight: 300;
+    margin: 0px;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #444;
+    color: #fff;
+  }
+  .question{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-left: 30px;
+  }
+  .answers {
+    margin-bottom: 20px;
+    text-align: left;
+    display: inline-block;
+  }
+  .answers label{
+    display: block;
+    font-weight: normal;
+    margin-bottom: 10px;
+    padding-left: 40px;
+  }
+  .title {
+    font-weight: bold;
+    font-size: 16px;
+    background-color: white;
+  }
+  #previous {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    background-color: #006bb3;
+    color: #fff;
+    border: 0px;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 0px;
+    right: 10%;
+    cursor: pointer;
+    /* padding: 20px; */
+    /* cursor: pointer;
+    margin-top: 300px;
+    align-items: right;
+    float: right;
+    /* margin-left: 1; */
+    /* margin-bottom: 0px; */ */
+  }
+  #next {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    background-color: #006bb3;
+    color: #fff;
+    border: 0px;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 0px;
+    right: 1%;
+    cursor: pointer;
+    /* padding: 20px; */
+    /* cursor: pointer;
+    margin-top: 300px;
+    align-items: right;
+    float: right;
+    /* margin-left: 1; */
+    /* margin-bottom: 0px; */ */
+  }
+  #submit{
+    ffont-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    background-color: #006bb3;
+    color: #fff;
+    border: 0px;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 0px;
+    right: 90%;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color: #38a;
+  }
 
-.slide{
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-.active-slide{
-  opacity: 1;
-  z-index: 2;
-}
-.quiz-container{
-  position: relative;
-  height: 200px;
-  margin-top: 40px;
-}
-
-
+  .slide{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .active-slide{
+    opacity: 1;
+    z-index: 2;
+  }
+  .quiz-container{
+    position: relative;
+    height: 200px;
+    margin-top: 40px;
+  }
+  .passage {
+    height: 95%; 
+    width: 100%; 
+    overflow:auto;
+    padding-bottom: 5px;
+    padding-right: 10px;
+  }
+  
 
 </style>
 </head>
 <body>
 <div>
 <div id="main">
-<h1>Medical College Admission Test</h1><button class="timer">Timer</button>
+  <h1>Medical College Admission Test</h1><button class="timer">Timer</button>
   <div class="btn-group" style="width:100%">
     <button style="width:10%">Highlight</button>
     <button style="width:10%">Strikethrough</button>
@@ -179,12 +248,16 @@ button:hover{
   <div class="jumbotron" style="margin-top: 0px; padding: 0px;">
     <div class="row" style="background-color:#006bb3;">
       <div class="column" style="background-color:white; margin-left: 33px; margin-right: 15px; border-color:#006bb3;">
-        <h2>Column 1</h2>
-        <p>Some text..</p>
+        <h2>Antenatal depression and anxiety in Pakistan</h2>
+        <div class="passage">
+          <div>An interesting finding in our study of antenatal depression and anxiety among women in Pakistan was the correlation between the occupation of pregnant women and antenatal depression and anxiety. In contrast to studies in western populations, which mention employment as a strong protective factor against major depression in pregnancy, our study found that pregnant women employed outside the home were actually more depressed and anxious than pregnant housewives. A study in Karachi, Pakistan apparently contradicts our findings by concluding that housewives, in general, are more depressed than working women. Several factors might explain this contradiction. Most studies with such findings mention education as an important protective factor against antenatal anxiety and depression. Therefore, the lower educational level of housewives compared to working women was associated with higher levels of anxiety and depression. However, our study included respondents from low and lower-middle socioeconomic classes, and 54% of the women in our sample were educated to less than the 10th grade level. So even most of the working women may not have been educated highly enough for their employment status to have a positive effect on their mental health. Secondly, in recent years inflation has increased and socioeconomic conditions have deteriorated in Pakistan, and these changes have led to increased stress and the pressures on working women to meet the economic needs of their household. This increased stress, combined with the demands of pregnancy, might be responsible for greater depression and anxiety in working women compared to housewives, who are relatively protected from work stress. Finally, another factor might also be operative in the social environment of Pakistan. In many orthodox Pakistani families, most of which belong to lower and lower-middle social classes, working women are highly stigmatized. In this socioeconomic setting, the home is considered the appropriate place for women, and being an obedient wife and a loving mother are considered their appropriate roles. Negative attitudes among relatives towards their work might contribute to depression and anxiety among working pregnant women from the lower and lower-middle social classes who participated in our study; housewives, in contrast, may have been protected from such discrimination.</div>  
+          <br>
+          <div>A novel and important finding in our study is the relationship between the gender of previous children and the level of antenatal depression and anxiety. Having daughters was significantly associated with antenatal depression and anxiety, whereas having sons was a protective factor. In Pakistan the family system is predominantly patriarchal. Women are treated as second-class citizens and denied certain social rights. Among the consequences of this social structure are honor killings, the bride price and dowry, the disputed status of female testimony, forced marriages and denial of a woman’s right to have a career. Parents view their sons as bread-earners and agents of continuation of the family name, and view their daughters as an economic burden. This is partly due to the tradition of providing a large dowry when a daughter marries, especially in India and Pakistan. The dowry may be in the form of land, money, jewelry or household items. Even after birth, sons are given preference over daughters with respect to access to healthcare and educational opportunities. Considering these societal pressures, pregnant women who have already given birth to one or more daughters are not only concerned about their future offspring’s gender, but are also subject to harassment, taunting and stigmatization by their family and relatives.</div>
+        </div>
       </div>
       <div class="column2" style="margin-right: 10px;">
-        <h3>Quiz on Important Facts</h3>
         <div class="quiz-container">
+          <h3 class=q-num></h3>
           <div id="quiz"></div>
         </div>
         <button id="previous">Previous Question</button>
@@ -217,17 +290,17 @@ button:hover{
             </label>`
           );
         }
-
         // add this question and its answers to the output
         output.push(
           `<div class="slide">
+            <div class="title"> ${"Question " + (questionNumber+1)} </div>
             <div class="question"> ${currentQuestion.question} </div>
             <div class="answers"> ${answers.join("")} </div>
           </div>`
         );
       }
     );
-
+    // document.getElementById("q-num").innerHTML = questionNumber;
     // finally combine our output list into one string of HTML and put it on the page
     quizContainer.innerHTML = output.join('');
   }
@@ -299,15 +372,17 @@ button:hover{
   const quizContainer = document.getElementById('quiz');
   const resultsContainer = document.getElementById('results');
   const submitButton = document.getElementById('submit');
+  const questionTitle = document.getElementById('q-num');
   const myQuestions = [
     {
-      question: "Who invented JavaScript?",
+      question: "Suppose a brand new study showed that women who were NOT pregnant experienced more stress if they were housewives than if they were working. What would the implications of this study be for the author’s study and the other study done in Karachi?",
       answers: {
-        a: "Douglas Crockford",
-        b: "Sheryl Sandberg",
-        c: "Brendan Eich"
+        a: "It would show that the author’s study is wrong and the Karachi study is more valid.",
+        b: "It would show that the Karachi study is wrong and the author’s study is more valid",
+        c: "It would show that both the author’s study and the Karachi study are wrong.", 
+        d: "It would neither support nor contradict either the author’s or the Karachi study."
       },
-      correctAnswer: "c"
+      correctAnswer: "d"
     },
     {
       question: "Which one of these is a JavaScript package manager?",
@@ -349,7 +424,7 @@ button:hover{
 })();
         </script>
       </div>
-</div>
+    </div>
   </div>
 </body>
 </html>
