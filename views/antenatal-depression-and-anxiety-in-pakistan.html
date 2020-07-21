@@ -1,0 +1,202 @@
+<html>
+<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link class="active"><a href="/antenatal-depression-and-anxiety-in-pakistan"><span class="sr-only">(current)</span></a></link>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.quiz.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Create two equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 47%;
+    padding: 30px;
+    height: 600px; /* Should be removed. Only for demonstration */
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+  .column2 {
+    float: left;
+    width: 47%;
+    padding: 30px;
+    height: 600px; /* Should be removed. Only for demonstration */
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .btn-group button {
+  background-color: #9AC8FD  ; /* Green background */
+  border: 1px solid white ; /* Green border */
+  font-size: 15px;
+  color: white; /* White text */
+  padding: 5px 10px 5px 5px;
+  /*padding: 8px 10px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+  border-bottom: 2px solid white;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  color: yellow;
+}
+#main {
+  width: 100%;
+}
+h1 {
+  background-color:#006bb3;
+  color: white; 
+  font-size: 15px; 
+  padding-left:10px; 
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 0%;
+  display: inline-block;
+  width: 80%;
+  margin-bottom: 0px;
+  border-bottom: 2px solid white;
+
+}
+button {
+  float: right;
+  background-color:#006bb3;
+  color: white; 
+  font-size: 15px; 
+  padding-left:10px; 
+  padding-top: 9px;
+  padding-bottom: 6px;
+  margin-top: 0%;
+  display: inline-block;
+  width: 20%;
+  border-left: 0px;
+  border-top: 0px;
+  border-right: 0px;
+  border-bottom: 2px solid white;
+}
+body {
+  background-color: #006bb3;
+}
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
+
+.column2{
+	font-size: 20px;
+	font-family: 'Work Sans', sans-serif;
+	color: #333;
+  font-weight: 300;
+  text-align: center;
+  background-color: #f8f6f0;
+}
+h1{
+  font-weight: 300;
+  margin: 0px;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #444;
+  color: #fff;
+}
+.question{
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.answers {
+  margin-bottom: 20px;
+  text-align: left;
+  display: inline-block;
+}
+.answers label{
+  display: block;
+  margin-bottom: 10px;
+}
+.previous, .next, .submit{
+  font-family: 'Work Sans', sans-serif;
+	font-size: 22px;
+	background-color: #279;
+	color: #fff;
+	border: 0px;
+	border-radius: 3px;
+	padding: 20px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+button:hover{
+	background-color: #38a;
+}
+
+.slide{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.active-slide{
+  opacity: 1;
+  z-index: 2;
+}
+.quiz-container{
+  position: relative;
+  height: 200px;
+  margin-top: 40px;
+}
+
+
+
+</style>
+</head>
+<body>
+<div>
+<div id="main">
+<h1>Medical College Admission Test</h1><button>Timer</button>
+  <div class="btn-group" style="width:100%">
+    <button style="width:10%">Highlight</button>
+    <button style="width:10%">Strikethrough</button>
+    <button style="width:67.5%">Watch Passage Analysis</button>
+    <button style="width:12.5%; text-align: right;">Flag for Review</button>
+  </div>
+  <div class="jumbotron" style="margin-top: 0px; padding: 0px;">
+    <div class="row" style="background-color:#006bb3;">
+      <div class="column" style="background-color:white; margin-left: 33px; margin-right: 15px; border-color:#006bb3;">
+        <h2>Column 1</h2>
+        <p>Some text..</p>
+      </div>
+      <div class="column2" style="margin-right: 10px;">
+        <h1>Quiz on Important Facts</h1>
+        <div class="quiz-container">
+          <div id="quiz"></div>
+        </div>
+        <button id="previous">Previous Question</button>
+        <button id="next">Next Question</button>
+        <button id="submit">Submit Quiz</button>
+        <div id="results"></div>
+        <script src="bootstrap.quiz.js"></script>
+      </div>
+</div>
+  </div>
+</body>
+</html>
+
