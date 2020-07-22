@@ -18,7 +18,6 @@
     background-color: #006bb3;
     height: 95%;
     width: 100%;
-
   }
   /* Create two equal columns that floats next to each other */
   .column {
@@ -32,14 +31,6 @@
     padding-bottom: 5%;
     overflow: hidden;
   }
-  /* .column2 {
-    float: left;
-    width: 47%;
-    padding: 30px;
-    height: 600px; /* Should be removed. Only for demonstration */
-    /* margin-top: 0px;
-    padding-top: 0px;
-  }  */
   .row {
     height: 90%;
   }
@@ -49,7 +40,7 @@
     display: table;
     clear: both;
   }
-  .btn-group button {
+  .btn-group button{
   background-color: #9AC8FD  ; /* Green background */
   border: 1px solid white ; /* Green border */
   font-size: 15px;
@@ -60,20 +51,41 @@
   float: left; /* Float the buttons side by side */
   border-bottom: 2px solid white;
   }
-
-  .btn-group button:not(:last-child) {
+  .btn.btn.btn-primary.dropdown-toggle button, .btn.btn-primary button  {
+    background-color: yellow  ; /* Green background */
+    border: 1px solid white ; /* Green border */
+    font-size: 15px;
+    color: white; /* White text */
+    padding: 5px 10px 5px 5px;
+    /*padding: 8px 10px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    border-bottom: 2px solid white;  
+  }
+  /* background-color: #9AC8FD  ; /* Green background */
+  /* border: 1px solid white ; /* Green border */
+  /* font-size: 15px; */
+  /* color: white; White text */
+  /* padding: 5px 10px 5px 5px; */
+  /*padding: 8px 10px; /* Some padding */
+  /* cursor: pointer; /* Pointer/hand icon */
+  /* float: left; /* Float the buttons side by side */
+  /* border-bottom: 2px solid white;
+  }   */
+  
+  .btn-group button:not(:last-child), .btn-group.dropdown:not(:last-child) {
     border-right: none; /* Prevent double borders */
   }
 
   /* Clear floats (clearfix hack) */
-  .btn-group:after {
+  .btn-group:after, .btn-group.dropdown:after {
     content: "";
     clear: both;
     display: table;
   }
 
   /* Add a background color on hover */
-  .btn-group button:hover {
+  .btn-group button:hover, .btn-group.dropdown button:hover {
     color: yellow;
   }
   #main {
@@ -102,7 +114,7 @@
     padding-top: 9px;
     padding-bottom: 6px;
     margin-top: 0%;
-    display: inline-block;
+    /* display: inline-block; */
     width: 20%;
     border-left: 0px;
     border-top: 0px;
@@ -140,12 +152,14 @@
     margin-bottom: 20px;
     text-align: left;
     display: inline-block;
+    /* word-wrap: break-word; */
   }
   .answers label{
     display: block;
     font-weight: normal;
     margin-bottom: 10px;
     padding-left: 40px;
+    display: inline-block;
   }
   .title {
     font-weight: bold;
@@ -163,13 +177,7 @@
     bottom: 0px;
     right: 10%;
     cursor: pointer;
-    /* padding: 20px; */
-    /* cursor: pointer;
-    margin-top: 300px;
-    align-items: right;
-    float: right;
-    /* margin-left: 1; */
-    /* margin-bottom: 0px; */ */
+  
   }
   #next {
     font-family: 'Work Sans', sans-serif;
@@ -182,16 +190,9 @@
     bottom: 0px;
     right: 1%;
     cursor: pointer;
-    /* padding: 20px; */
-    /* cursor: pointer;
-    margin-top: 300px;
-    align-items: right;
-    float: right;
-    /* margin-left: 1; */
-    /* margin-bottom: 0px; */ */
   }
   #submit{
-    ffont-family: 'Work Sans', sans-serif;
+    font-family: 'Work Sans', sans-serif;
     font-size: 14px;
     background-color: #006bb3;
     color: #fff;
@@ -202,9 +203,13 @@
     right: 90%;
     cursor: pointer;
   }
-  button:hover{
-    background-color: #38a;
+  #results {
+    float: left;
+    margin-top: 60%;
   }
+  /* button:hover{
+    background-color: #38a;
+  } */
 
   .slide{
     position: absolute;
@@ -231,7 +236,19 @@
     padding-bottom: 5px;
     padding-right: 10px;
   }
-  
+
+  /* .highlight {
+    background-color: yellow;
+  } */
+  #yeshighlight, #nohighlight {
+    background-color: #006bb3;
+    color: white;
+    border-radius: 0px;
+    border-color: #006bb3;
+  }
+  .dropdown-menu{
+    background-color:#006bb3;
+  }
 
 </style>
 </head>
@@ -240,9 +257,21 @@
 <div id="main">
   <h1>Medical College Admission Test</h1><button class="timer">Timer</button>
   <div class="btn-group" style="width:100%">
-    <button style="width:10%">Highlight</button>
-    <button style="width:10%">Strikethrough</button>
-    <button style="width:67.5%">Watch Passage Analysis</button>
+    <div class="btn-group dropdown" style="width: 12%">
+      <button type="button" class="btn btn-primary dropdown-toggle" style="width: 20%; height: 34px; margin-left: 0px; background-color: yellow; padding-left: 10px;" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false" id="indicator">
+        <!-- <span class="sr-only">Toggle Dropdown</span>  -->
+        <span class="caret" style="color: black;"></span>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item " id= "yeshighlight" type="button">Highlight</button>
+        <button class="dropdown-item"  id= "nohighlight" type="button">Remove Highlight</a>
+      </div>
+      <button type="button" class="btn btn-primary" style="width: 80%;" id= "highlight">Highlight</button>
+    </div>
+    <!-- <button id= "highlight" style="width:10%">Highlight</button> -->
+    <button id= "strikethrough" style="width:12%">Strikethrough</button>
+    <button style="width:63.5%">Watch Passage Analysis</button>
     <button style="width:12.5%; text-align: right;">Flag for Review</button>
   </div>
   <div class="jumbotron" style="margin-top: 0px; padding: 0px;">
@@ -266,162 +295,315 @@
         <div id="results"></div>
         <script type="text/javascript"> 
         (function(){
-  // Functions
-  function buildQuiz(){
-    // variable to store the HTML output
-    const output = [];
+          var flagged = [];
+          
+        // Functions
+          function buildQuiz(){
+            // variable to store the HTML output
+            const output = [];
 
-    // for each question...
-    myQuestions.forEach(
-      (currentQuestion, questionNumber) => {
+            // for each question...
+            myQuestions.forEach(
+              (currentQuestion, questionNumber) => {
+                //preloading all questions to be unflagged
+                flagged.push(false);
+                
+                // variable to store the list of possible answers
+                const answers = [];
 
-        // variable to store the list of possible answers
-        const answers = [];
+                // and for each available answer...
+                for(letter in currentQuestion.answers){
 
-        // and for each available answer...
-        for(letter in currentQuestion.answers){
+                  // ...add an HTML radio button
+                  answers.push(
+                    `<label>
+                      <input type="radio" name="question${questionNumber}" value="${letter}">
+                      ${letter.toUpperCase().bold()}.
+                      ${currentQuestion.answers[letter]}
+                    </label>`
+                  );
+                }
+                // add this question and its answers to the output
+                output.push(
+                  `<div class="slide">
+                    <div class="title"> ${"Question " + (questionNumber+1)} </div>
+                    <div class="question"> ${currentQuestion.question} </div>
+                    <div class="answers"> ${answers.join("")} </div>
+                  </div>`
+                );
+              }
+            );
+            // document.getElementById("q-num").innerHTML = questionNumber;
+            // finally combine our output list into one string of HTML and put it on the page
+            quizContainer.innerHTML = output.join('');
+            // window.alert(flagged);
+          }
+          
+          function showResults(){
 
-          // ...add an HTML radio button
-          answers.push(
-            `<label>
-              <input type="radio" name="question${questionNumber}" value="${letter}">
-              ${letter} :
-              ${currentQuestion.answers[letter]}
-            </label>`
-          );
-        }
-        // add this question and its answers to the output
-        output.push(
-          `<div class="slide">
-            <div class="title"> ${"Question " + (questionNumber+1)} </div>
-            <div class="question"> ${currentQuestion.question} </div>
-            <div class="answers"> ${answers.join("")} </div>
-          </div>`
-        );
-      }
-    );
-    // document.getElementById("q-num").innerHTML = questionNumber;
-    // finally combine our output list into one string of HTML and put it on the page
-    quizContainer.innerHTML = output.join('');
-  }
+            // gather answer containers from our quiz
+            const answerContainers = quizContainer.querySelectorAll('.answers');
 
-  function showResults(){
+            // keep track of user's answers
+            let numCorrect = 0;
 
-    // gather answer containers from our quiz
-    const answerContainers = quizContainer.querySelectorAll('.answers');
+            // for each question...
+            myQuestions.forEach( (currentQuestion, questionNumber) => {
 
-    // keep track of user's answers
-    let numCorrect = 0;
+              // find selected answer
+              const answerContainer = answerContainers[questionNumber];
+              const selector = `input[name=question${questionNumber}]:checked`;
+              const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-    // for each question...
-    myQuestions.forEach( (currentQuestion, questionNumber) => {
+              // if answer is correct
+              if(userAnswer === currentQuestion.correctAnswer){
+                // add to the number of correct answers
+                numCorrect++;
 
-      // find selected answer
-      const answerContainer = answerContainers[questionNumber];
-      const selector = `input[name=question${questionNumber}]:checked`;
-      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+                // color the answers green
+                answerContainers[questionNumber].style.color = 'lightgreen';
+              }
+              // if answer is wrong or blank
+              else{
+                // color the answers red
+                answerContainers[questionNumber].style.color = 'red';
+              }
+            });
 
-      // if answer is correct
-      if(userAnswer === currentQuestion.correctAnswer){
-        // add to the number of correct answers
-        numCorrect++;
+            // show number of correct answers out of total
+            resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+          }
 
-        // color the answers green
-        answerContainers[questionNumber].style.color = 'lightgreen';
-      }
-      // if answer is wrong or blank
-      else{
-        // color the answers red
-        answerContainers[questionNumber].style.color = 'red';
-      }
-    });
+          function showSlide(n) {
+            slides[currentSlide].classList.remove('active-slide');
+            slides[n].classList.add('active-slide');
+            currentSlide = n;
+            if(currentSlide === 0){
+              previousButton.style.display = 'none';
+            }
+            else{
+              previousButton.style.display = 'inline-block';
+            }
+            if(currentSlide === slides.length-1){
+              nextButton.style.display = 'none';
+              submitButton.style.display = 'inline-block';
+            }
+            else{
+              nextButton.style.display = 'inline-block';
+              submitButton.style.display = 'none';
+            }
+          }
 
-    // show number of correct answers out of total
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-  }
+          function showNextSlide() {
+            showSlide(currentSlide + 1);
+          }
 
-  function showSlide(n) {
-    slides[currentSlide].classList.remove('active-slide');
-    slides[n].classList.add('active-slide');
-    currentSlide = n;
-    if(currentSlide === 0){
-      previousButton.style.display = 'none';
-    }
-    else{
-      previousButton.style.display = 'inline-block';
-    }
-    if(currentSlide === slides.length-1){
-      nextButton.style.display = 'none';
-      submitButton.style.display = 'inline-block';
-    }
-    else{
-      nextButton.style.display = 'inline-block';
-      submitButton.style.display = 'none';
-    }
-  }
+          function showPreviousSlide() {
+            showSlide(currentSlide - 1);
+          }
 
-  function showNextSlide() {
-    showSlide(currentSlide + 1);
-  }
+          function getSafeRanges(dangerous) {
+            var a = dangerous.commonAncestorContainer;
+            // Starts -- Work inward from the start, selecting the largest safe range
+            var s = new Array(0), rs = new Array(0);
+            if (dangerous.startContainer != a){
+                for(var i = dangerous.startContainer; i != a; i = i.parentNode)
+                    s.push(i)
+            }
+            if (0 < s.length) for(var i = 0; i < s.length; i++) {
+                var xs = document.createRange();
+                if (i) {
+                    xs.setStartAfter(s[i-1]);
+                    xs.setEndAfter(s[i].lastChild);
+                }
+                else {
+                    xs.setStart(s[i], dangerous.startOffset);
+                    xs.setEndAfter(
+                        (s[i].nodeType == Node.TEXT_NODE)
+                        ? s[i] : s[i].lastChild
+                    );
+                }
+                rs.push(xs);
+            }
 
-  function showPreviousSlide() {
-    showSlide(currentSlide - 1);
-  }
+            // Ends -- basically the same code reversed
+            var e = new Array(0), re = new Array(0);
+            if (dangerous.endContainer != a){
+                for(var i = dangerous.endContainer; i != a; i = i.parentNode)
+                    e.push(i)
+            }
+            if (0 < e.length) for(var i = 0; i < e.length; i++) {
+                var xe = document.createRange();
+                if (i) {
+                    xe.setStartBefore(e[i].firstChild);
+                    xe.setEndBefore(e[i-1]);
+                }
+                else {
+                    xe.setStartBefore(
+                        (e[i].nodeType == Node.TEXT_NODE)
+                        ? e[i] : e[i].firstChild
+                    );
+                    xe.setEnd(e[i], dangerous.endOffset);
+                }
+                re.unshift(xe);
+            }
 
-  // Variables
-  const quizContainer = document.getElementById('quiz');
-  const resultsContainer = document.getElementById('results');
-  const submitButton = document.getElementById('submit');
-  const questionTitle = document.getElementById('q-num');
-  const myQuestions = [
-    {
-      question: "Suppose a brand new study showed that women who were NOT pregnant experienced more stress if they were housewives than if they were working. What would the implications of this study be for the author’s study and the other study done in Karachi?",
-      answers: {
-        a: "It would show that the author’s study is wrong and the Karachi study is more valid.",
-        b: "It would show that the Karachi study is wrong and the author’s study is more valid",
-        c: "It would show that both the author’s study and the Karachi study are wrong.", 
-        d: "It would neither support nor contradict either the author’s or the Karachi study."
-      },
-      correctAnswer: "d"
-    },
-    {
-      question: "Which one of these is a JavaScript package manager?",
-      answers: {
-        a: "Node.js",
-        b: "TypeScript",
-        c: "npm"
-      },
-      correctAnswer: "c"
-    },
-    {
-      question: "Which tool can you use to ensure code quality?",
-      answers: {
-        a: "Angular",
-        b: "jQuery",
-        c: "RequireJS",
-        d: "ESLint"
-      },
-      correctAnswer: "d"
-    }
-  ];
+            // Middle -- the uncaptured middle
+            if ((0 < s.length) && (0 < e.length)) {
+                var xm = document.createRange();
+                xm.setStartAfter(s[s.length - 1]);
+                xm.setEndBefore(e[e.length - 1]);
+            }
+            else {
+                return [dangerous];
+            }
 
-  // Kick things off
-  buildQuiz();
+            // Concat
+            rs.push(xm);
+            response = rs.concat(re);    
 
-  // Pagination
-  const previousButton = document.getElementById("previous");
-  const nextButton = document.getElementById("next");
-  const slides = document.querySelectorAll(".slide");
-  let currentSlide = 0;
+            // Send to Console
+            return response;
+          }
+  
+          function highlightSelection() {
+            var userSelection = window.getSelection().getRangeAt(0);
+            var safeRanges = getSafeRanges(userSelection);
+            for (var i = 0; i < safeRanges.length; i++) {
+                highlightRange(safeRanges[i]);
+            }
+          }
+          
+          function highlightRange(range) {
+            var newNode = document.createElement("div");
+            if (document.getElementById("indicator").style.backgroundColor == "yellow") {
+              newNode.style.backgroundColor = 'yellow'; 
+              newNode.style.display = 'inline';
+            }
+            if (document.getElementById("indicator").style.backgroundColor == "white") {
+              newNode.style.backgroundColor = 'white'; 
+              newNode.style.display = 'inline';
+            }
+            range.surroundContents(newNode);
+          }
+          function highlightAdder(){
+            document.getElementById("indicator").style.backgroundColor = "yellow";
+          }
+          function highlightRemover(){
+            document.getElementById("indicator").style.backgroundColor = "white";
+          }
+          
+          function strikeSelection() {
+            var userSelection = window.getSelection().getRangeAt(0);
+            var safeRanges = getSafeRanges(userSelection);
+            for (var i = 0; i < safeRanges.length; i++) {
+                strikeRange(safeRanges[i]);
+            }
+          }
 
-  // Show the first slide
-  showSlide(currentSlide);
+          function strikeRange(range) {
+            document.designMode = "on";
+            document.execCommand("strikeThrough", false, range)
+            document.designMode = "off";
+          }
+          
 
-  // Event listeners
-  submitButton.addEventListener('click', showResults);
-  previousButton.addEventListener("click", showPreviousSlide);
-  nextButton.addEventListener("click", showNextSlide);
-})();
+          // Variables
+          const quizContainer = document.getElementById('quiz');
+          const resultsContainer = document.getElementById('results');
+          const submitButton = document.getElementById('submit');
+          const questionTitle = document.getElementById('q-num');
+          const highlightButton = document.getElementById("highlight");
+          const strikeButton = document.getElementById("strikethrough");
+          const removeHighlight = document.getElementById("nohighlight");
+          const addHighlight = document.getElementById("yeshighlight");
+          const myQuestions = [
+            {
+              question: "In the passage, which of the following facts does the author NOT use to support their explanation for the increased incidence of antenatal depression and anxiety in women who have previously had girls?",
+              answers: {
+                a: "Females are perceived to have less credibility.",
+                b: "Daughters do not carry the family name.",
+                c: "Girls are often denied the right to work.", 
+                d: "Economic inflation increases stress on working women."
+              },
+              correctAnswer: "d"
+            },
+            {
+              question: "The main function of the statement in paragraph 2, “pregnant women who have already given birth to one or more daughters are not only concerned about their future offspring’s gender, but are also subject to harassment, taunting and stigmatization by their family and relatives” is to:",
+              answers: {
+                a: "emphasize that women in Pakistan face severe gender discrimination.",
+                b: "clarify the patrilineal context in which pregnant women in Pakistan live.",
+                c: "justify the strong preference women show for having boys instead of girls.", 
+                d: "show the multiple ways that the Patriarchal system creates stress on pregnant mothers who have previously had girls."
+              },
+              correctAnswer: "d"
+            },
+            {
+              question: "According to the passage, which of the following cultural factors has been shown to affect antenatal depression and anxiety in Western populations?",
+              answers: {
+                a: "Employment is a strong protective factor against major depression in pregnancy.",
+                b: "Housewives, in general, are more depressed than working women.",
+                c: "Education increases antenatal anxiety and depression.",
+                d: "Working women in orthodox families are highly stigmatized."
+              },
+              correctAnswer: "a"
+            }, 
+            {
+              question: "Based on the passage, which of the following social changes is MOST LIKELY to cause a decrease in antenatal depression and anxiety?",
+              answers: {
+                a: "an increase in the number of women in the workforce.",
+                b: "a decrease in the number of women in the workforce.",
+                c: "a decrease in the stigmatization of women in the workforce.",
+                d: "an increase in the percentage of newborns who are female."
+              }, 
+              correctAnswer: "c"
+            },
+            {
+              question: "The passage author’s study found that pregnant women in Pakistan employed outside the home are more depressed and anxious than housewives. Other studies in Pakistan have found that women employed outside the home are less depressed. The apparently contradictory findings are MOST LIKELY viewed by the author as being:",
+              answers: {
+                a: "the result of differences in the gender of prior offspring.",
+                b: "due to differences in the economy and education of the working women.",
+                c: "the different specific locations of the studies.",
+                d: "the author’s own study having more accurate data."
+              },
+              correctAnswer: "b"
+            }, 
+            {
+              question: "Suppose a brand new study showed that women who were NOT pregnant experienced more stress if they were housewives than if they were working. What would the implications of this study be for the author’s study and the other study done in Karachi?",
+              answers: {
+                a: "It would show that the author’s study is wrong and the Karachi study is more valid.",
+                b: "It would show that the Karachi study is wrong and the author’s study is more valid.",
+                c: "It would show that both the author’s study and the Karachi study are wrong.",
+                d: "It would neither support nor contradict either the author’s or the Karachi study."
+              },
+              correctAnswer: "d"
+            }
+          
+          ];
+
+          // Kick things off
+          buildQuiz();
+
+          // Pagination
+          const previousButton = document.getElementById("previous");
+          const nextButton = document.getElementById("next");
+          const slides = document.querySelectorAll(".slide");
+          let currentSlide = 0;
+          
+
+          // Show the first slide
+          showSlide(currentSlide);
+
+          // Event listeners
+          submitButton.addEventListener('click', showResults);
+          previousButton.addEventListener("click", showPreviousSlide);
+          nextButton.addEventListener("click", showNextSlide);
+          highlightButton.addEventListener("click", highlightSelection);
+          strikeButton.addEventListener("click", strikeSelection);
+          removeHighlight.addEventListener("click", highlightRemover);
+          addHighlight.addEventListener("click", highlightAdder);
+
+        })();
         </script>
       </div>
     </div>
