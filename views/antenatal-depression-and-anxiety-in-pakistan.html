@@ -25,7 +25,6 @@
     width: 47%;
     padding: 30px;
     height: 100%;
-    /* height: 600px; Should be removed. Only for demonstration */
     margin-top: 0px;
     padding-top: 0px;
     padding-bottom: 5%;
@@ -41,56 +40,43 @@
     clear: both;
   }
   .btn-group button{
-  background-color: #9AC8FD  ; /* Green background */
-  border: 1px solid white ; /* Green border */
+  background-color: #9AC8FD  ; /* blue background*/
+  border: 1px solid white ; /* white border */
   font-size: 15px;
   color: white; /* White text */
   padding: 5px 10px 5px 5px;
-  /*padding: 8px 10px; /* Some padding */
   cursor: pointer; /* Pointer/hand icon */
   float: left; /* Float the buttons side by side */
   border-bottom: 2px solid white;
   }
+
   .btn.btn.btn-primary.dropdown-toggle button, .btn.btn-primary button  {
-    background-color: yellow  ; /* Green background */
-    border: 1px solid white ; /* Green border */
+    background-color: yellow  ; /* toggle color indicator */
+    border: 1px solid white ; /* white border */
     font-size: 15px;
     color: white; /* White text */
     padding: 5px 10px 5px 5px;
-    /*padding: 8px 10px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
     border-bottom: 2px solid white;  
   }
-  /* background-color: #9AC8FD  ; /* Green background */
-  /* border: 1px solid white ; /* Green border */
-  /* font-size: 15px; */
-  /* color: white; White text */
-  /* padding: 5px 10px 5px 5px; */
-  /*padding: 8px 10px; /* Some padding */
-  /* cursor: pointer; /* Pointer/hand icon */
-  /* float: left; /* Float the buttons side by side */
-  /* border-bottom: 2px solid white;
-  }   */
-  
   .btn-group button:not(:last-child), .btn-group.dropdown:not(:last-child) {
     border-right: none; /* Prevent double borders */
   }
-
   /* Clear floats (clearfix hack) */
   .btn-group:after, .btn-group.dropdown:after {
     content: "";
     clear: both;
     display: table;
   }
-
-  /* Add a background color on hover */
+  /* Add a different text color on hover */
   .btn-group button:hover, .btn-group.dropdown button:hover {
     color: yellow;
   }
   #main {
-    width: 100%;
+    width: 100%; /*scale to screen size*/
   }
+  /* Title "Medical College Admission Test" */
   h1 {
     background-color:#006bb3;
     color: white; 
@@ -114,26 +100,24 @@
     padding-top: 9px;
     padding-bottom: 6px;
     margin-top: 0%;
-    /* display: inline-block; */
     width: 20%;
     border-left: 0px;
     border-top: 0px;
     border-right: 0px;
     border-bottom: 2px solid white;
   }
+  /* formatting for the questions container */
   .column2 {
     background-color: white;
     float: left;
     width: 47%;
     padding: 30px;
     height: 100%;
-    /* height: 600px; Should be removed. Only for demonstration */
     margin-top: 0px;
     padding-top: 0px;
     margin-bottom: 2%;
-    
   }
-
+  /* Question number display at the top of each question */
   h3{
     font-weight: 300;
     margin: 0px;
@@ -142,12 +126,14 @@
     background-color: #444;
     color: #fff;
   }
+  /* Actual question text */
   .question{
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 10px;
     padding-left: 30px;
   }
+  /* Text for the answer choices */
   .answers {
     margin-bottom: 20px;
     text-align: left;
@@ -166,6 +152,7 @@
     font-size: 16px;
     background-color: white;
   }
+  /* Button to navigate to the previous question */
   #previous {
     font-family: 'Work Sans', sans-serif;
     font-size: 14px;
@@ -174,11 +161,11 @@
     border: 0px;
     border-radius: 3px;
     position: absolute;
-    bottom: 0px;
-    right: 10%;
+    bottom: 0px; /*positioned at bottom of screen*/
+    right: 10%; /* positioned 10% right of the screen. Stays left of the next button */
     cursor: pointer;
-  
   }
+  /* Button to navigate to the next question */
   #next {
     font-family: 'Work Sans', sans-serif;
     font-size: 14px;
@@ -187,10 +174,11 @@
     border: 0px;
     border-radius: 3px;
     position: absolute;
-    bottom: 0px;
-    right: 1%;
+    bottom: 0px; /*positioned at bottom of screen*/
+    right: 1%; /*positioned 1% from right of screen. */
     cursor: pointer;
   }
+  /*Button to submit and check answers*/
   #submit{
     font-family: 'Work Sans', sans-serif;
     font-size: 14px;
@@ -203,14 +191,12 @@
     right: 90%;
     cursor: pointer;
   }
+  /* Displays # questions correct */
   #results {
     float: left;
     margin-top: 60%;
   }
-  /* button:hover{
-    background-color: #38a;
-  } */
-
+/* the question slides are made invisible */
   .slide{
     position: absolute;
     left: 0px;
@@ -220,6 +206,7 @@
     opacity: 0;
     transition: opacity 0.5s;
   }
+  /* the active question slide is visible */
   .active-slide{
     opacity: 1;
     z-index: 2;
@@ -236,10 +223,7 @@
     padding-bottom: 5px;
     padding-right: 10px;
   }
-
-  /* .highlight {
-    background-color: yellow;
-  } */
+/* The dropdown options to either highlight or remove highlight */
   #yeshighlight, #nohighlight {
     background-color: #006bb3;
     color: white;
@@ -260,7 +244,6 @@
     <div class="btn-group dropdown" style="width: 12%">
       <button type="button" class="btn btn-primary dropdown-toggle" style="width: 20%; height: 34px; margin-left: 0px; background-color: yellow; padding-left: 10px;" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false" id="indicator">
-        <!-- <span class="sr-only">Toggle Dropdown</span>  -->
         <span class="caret" style="color: black;"></span>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -269,7 +252,6 @@
       </div>
       <button type="button" class="btn btn-primary" style="width: 80%;" id= "highlight">Highlight</button>
     </div>
-    <!-- <button id= "highlight" style="width:10%">Highlight</button> -->
     <button id= "strikethrough" style="width:12%">Strikethrough</button>
     <button style="width:63.5%">Watch Passage Analysis</button>
     <button style="width:12.5%; text-align: right;">Flag for Review</button>
@@ -401,7 +383,8 @@
           function showPreviousSlide() {
             showSlide(currentSlide - 1);
           }
-
+          
+          // gets safe range of user's selection
           function getSafeRanges(dangerous) {
             var a = dangerous.commonAncestorContainer;
             // Starts -- Work inward from the start, selecting the largest safe range
@@ -465,7 +448,7 @@
             // Send to Console
             return response;
           }
-  
+          //calls highlight fnxn on the entire user selection
           function highlightSelection() {
             var userSelection = window.getSelection().getRangeAt(0);
             var safeRanges = getSafeRanges(userSelection);
@@ -473,26 +456,31 @@
                 highlightRange(safeRanges[i]);
             }
           }
-          
+          //highlights selection 
           function highlightRange(range) {
             var newNode = document.createElement("div");
+            //if toggle is on yellow/highlight, then make node's background yellow
             if (document.getElementById("indicator").style.backgroundColor == "yellow") {
               newNode.style.backgroundColor = 'yellow'; 
               newNode.style.display = 'inline';
             }
+            //if toggle is on white/remove highlight, then make node's background white
             if (document.getElementById("indicator").style.backgroundColor == "white") {
               newNode.style.backgroundColor = 'white'; 
               newNode.style.display = 'inline';
             }
+            //changes background color of selection
             range.surroundContents(newNode);
           }
+          //makes toggle box color yellow to highlight
           function highlightAdder(){
             document.getElementById("indicator").style.backgroundColor = "yellow";
           }
+          //makes toggle box color white to remove highlight
           function highlightRemover(){
             document.getElementById("indicator").style.backgroundColor = "white";
           }
-          
+          //calls strike function on entire user selection
           function strikeSelection() {
             var userSelection = window.getSelection().getRangeAt(0);
             var safeRanges = getSafeRanges(userSelection);
@@ -500,7 +488,7 @@
                 strikeRange(safeRanges[i]);
             }
           }
-
+          //strikes selection. Unstrikes if it is already striked
           function strikeRange(range) {
             document.designMode = "on";
             document.execCommand("strikeThrough", false, range)
