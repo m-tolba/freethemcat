@@ -3,6 +3,8 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link class="active"><a href="/antenatal-depression-and-anxiety-in-pakistan"><span class="sr-only">(current)</span></a></link>
 <link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;1,300&display=swap" rel="stylesheet"/>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.quiz.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -234,13 +236,156 @@
     background-color:#006bb3;
   }
 
+  .controls {
+  display: flex;
+  justify-content: space-between;
+
+  width: 187px;
+  }
+
+  .buttonPlay, .buttonReset {
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  border: none;
+  margin: 0;
+  outline: none;
+}
+
+#playButton {
+  display: block;
+}
+
+#pauseButton {
+  display: none;
+}
+
 </style>
 </head>
 <body>
 <div>
 <div id="main">
-  <h1>Medical College Admission Test</h1><button class="timer">Timer</button>
+  <h1>Medical College Admission Test</h1>
+  <!-- <button class="timer">Timer</button> -->
+  <div class="timer">Timer: <span id="time">00:00:00</span></div>
+    <!-- Buttons for controlling timer -->
+    <div class="controls">
+      <!--pause button shows up in same location as start button once timer has started -->
+      <button class="buttonPlay"> 
+        <img id="playButton" src="https://res.cloudinary.com/https-tinloof-com/image/upload/v1593360448/blog/time-in-js/play-button_opkxmt.svg" />
+        <img id="pauseButton" src="https://res.cloudinary.com/https-tinloof-com/image/upload/v1593360448/blog/time-in-js/pause-button_pinhpy.svg" />
+      </button>
+      <!-- Reset button separate -->
+      <button class="buttonReset">
+        <img id="resetButton" src="https://res.cloudinary.com/https-tinloof-com/image/upload/v1593360448/blog/time-in-js/reset-button_mdv6wf.svg" />
+      </button>
+<!-- 
+        <input type="button" id="startTimer" value="Start" onclick="start();"><br/>
+        <input type="button" id="stopTimer" value="Stop"  onclick="stop();"><br/>
+        <input type="button" id="resetTimer" value="Reset"  onclick="reset();"><br/> -->
+        <script>
+          function timeToString(time) {
+            let diffInHrs = time / 3600000;
+            let hh = Math.floor(diffInHrs);
+
+            let diffInMin = (diffInHrs - hh) * 60;
+            let mm = Math.floor(diffInMin);
+
+            let diffInSec = (diffInMin - mm) * 60;
+            let ss = Math.floor(diffInSec);
+
+            let diffInMs = (diffInSec - ss) * 100;
+            let ms = Math.floor(diffInMs);
+
+            let formattedMM = mm.toString().padStart(2, "0");
+            let formattedSS = ss.toString().padStart(2, "0");
+            let formattedMS = ms.toString().padStart(2, "0");
+
+            return `${formattedMM}:${formattedSS}:${formattedMS}`;
+          }
+
+          // Declare variables to use in our functions below
+
+          let startTime;
+          let elapsedTime = 0;
+          let timerInterval;
+
+          // Create function to modify innerHTML
+
+          function print(txt) {
+            document.getElementById("time").innerHTML = txt;
+          }
+
+          // Create "start", "pause" and "reset" functions
+
+          function start() {
+            startTime = Date.now() - elapsedTime;
+            timerInterval = setInterval(function printTime() {
+              elapsedTime = Date.now() - startTime;
+              print(timeToString(elapsedTime));
+            }, 10);
+            showButton("PAUSE");
+          }
+
+          function pause() {
+            clearInterval(timerInterval);
+            showButton("PLAY");
+          }
+
+          function reset() {
+            clearInterval(timerInterval);
+            print("00:00:00");
+            elapsedTime = 0;
+            showButton("PLAY");
+          }
+
+          // Create function to display buttons
+
+          function showButton(buttonKey) {
+            const buttonToShow = buttonKey === "PLAY" ? playButton : pauseButton;
+            const buttonToHide = buttonKey === "PLAY" ? pauseButton : playButton;
+            buttonToShow.style.display = "block";
+            buttonToHide.style.display = "none";
+          }
+          // Create event listeners
+
+          let playButton = document.getElementById("playButton");
+          let pauseButton = document.getElementById("pauseButton");
+          let resetButton = document.getElementById("resetButton");
+
+          playButton.addEventListener("click", start);
+          pauseButton.addEventListener("click", pause);
+          resetButton.addEventListener("click", reset);
+            // var timeElapsed = 0;
+            // var timerID = -1;
+            // function tick() {
+            //     timeElapsed++
+            //     document.getElementById("time").innerHTML = timeElapsed;
+            // }
+
+            // function start() {
+            //     if(timerID == -1){
+            //         timerID = setInterval(tick, 1000);
+            //     }
+            // }
+
+            // function stop() {
+            //     if(timerID != -1){
+            //         clearInterval(timerID)
+            //         timerID = -1
+            //     }
+            // }
+
+            // function reset() {
+            //     stop();
+            //     timeElapsed = -1;
+            //     tick()
+            //}
+        </script>
+
+  <!-- second row bar buttons under "btn-group" class -->
   <div class="btn-group" style="width:100%">
+    <!-- highlight button and dropdown options -->
     <div class="btn-group dropdown" style="width: 12%">
       <button type="button" class="btn btn-primary dropdown-toggle" style="width: 20%; height: 34px; margin-left: 0px; background-color: yellow; padding-left: 10px;" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false" id="indicator">
@@ -252,14 +397,20 @@
       </div>
       <button type="button" class="btn btn-primary" style="width: 80%;" id= "highlight">Highlight</button>
     </div>
+    <!-- strikethrough button  -->
     <button id= "strikethrough" style="width:12%">Strikethrough</button>
+    <!-- watch passage analysis button -->
     <button style="width:63.5%">Watch Passage Analysis</button>
+    <!-- flag for review button -->
     <button style="width:12.5%; text-align: right;">Flag for Review</button>
   </div>
+  <!-- Everything below the menu options  -->
   <div class="jumbotron" style="margin-top: 0px; padding: 0px;">
     <div class="row" style="background-color:#006bb3;">
       <div class="column" style="background-color:white; margin-left: 33px; margin-right: 15px; border-color:#006bb3;">
+        <!-- Passage title -->
         <h2>Antenatal depression and anxiety in Pakistan</h2>
+        <!-- The passage -->
         <div class="passage">
           <div>An interesting finding in our study of antenatal depression and anxiety among women in Pakistan was the correlation between the occupation of pregnant women and antenatal depression and anxiety. In contrast to studies in western populations, which mention employment as a strong protective factor against major depression in pregnancy, our study found that pregnant women employed outside the home were actually more depressed and anxious than pregnant housewives. A study in Karachi, Pakistan apparently contradicts our findings by concluding that housewives, in general, are more depressed than working women. Several factors might explain this contradiction. Most studies with such findings mention education as an important protective factor against antenatal anxiety and depression. Therefore, the lower educational level of housewives compared to working women was associated with higher levels of anxiety and depression. However, our study included respondents from low and lower-middle socioeconomic classes, and 54% of the women in our sample were educated to less than the 10th grade level. So even most of the working women may not have been educated highly enough for their employment status to have a positive effect on their mental health. Secondly, in recent years inflation has increased and socioeconomic conditions have deteriorated in Pakistan, and these changes have led to increased stress and the pressures on working women to meet the economic needs of their household. This increased stress, combined with the demands of pregnancy, might be responsible for greater depression and anxiety in working women compared to housewives, who are relatively protected from work stress. Finally, another factor might also be operative in the social environment of Pakistan. In many orthodox Pakistani families, most of which belong to lower and lower-middle social classes, working women are highly stigmatized. In this socioeconomic setting, the home is considered the appropriate place for women, and being an obedient wife and a loving mother are considered their appropriate roles. Negative attitudes among relatives towards their work might contribute to depression and anxiety among working pregnant women from the lower and lower-middle social classes who participated in our study; housewives, in contrast, may have been protected from such discrimination.</div>  
           <br>
