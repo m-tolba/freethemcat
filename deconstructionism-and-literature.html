@@ -1,0 +1,1146 @@
+<html>
+<head>
+<meta name="viewport" content= "width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link class="active"><a href="/deconstructionism-and-literature"><span class="sr-only">(current)</span></a></link>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;1,300&display=swap" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.quiz.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    background-color: #006bb3;
+  }
+  body {
+    background-color: #006bb3;
+    height: 95%;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  /* Create two equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 47%;
+    padding: 30px;
+    height: 100%;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 5%;
+    overflow: hidden;
+  }
+  .row {
+    height: 90%;
+  }
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .btn-group button{
+    background-color: #9AC8FD  ; /* blue background*/
+    border: 1px solid white ; /* white border */
+    font-size: 15px;
+    color: white; /* White text */
+    padding: 5px 10px 5px 5px;
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    border-bottom: 2px solid white;
+  }
+
+  .btn.btn.btn-primary.dropdown-toggle button, .btn.btn-primary button  {
+    background-color: yellow  ; /* toggle color indicator */
+    border: 1px solid white ; /* white border */
+    font-size: 15px;
+    color: white; /* White text */
+    padding: 5px 10px 5px 5px;
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    border-bottom: 2px solid white;  
+  }
+  .btn-group button:not(:last-child), .btn-group.dropdown:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+  /* Clear floats (clearfix hack) */
+  .btn-group:after, .btn-group.dropdown:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  /* Add a different text color on hover */
+  .btn-group button:hover, .btn-group.dropdown button:hover {
+    color: yellow;
+  }
+  #main {
+    width: 100%; /*scale to screen size*/
+  }
+  /* Title "Medical College Admission Test" */
+  h1 {
+    background-color:#006bb3;
+    color: white; 
+    font-size: 15px; 
+    padding-left:10px; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    margin-top: 0%;
+    display: inline-block;
+    width: 70%;
+    margin-bottom: 0%;
+    border-bottom: 2px solid white;
+  }
+  .timer {
+    float: right;
+    background-color:#006bb3;
+    color: white; 
+    font-size: 15px; 
+    padding-left:10px; 
+    padding-top: 8px;
+    padding-bottom: 6px;
+    margin-top: 0%;
+    width: 30%;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 2px solid white;
+    position: relative;
+    /* display: inline-block; */
+  }
+  /* formatting for the questions container */
+  .column2 {
+    background-color: white;
+    float: left;
+    width: 47%;
+    padding: 30px;
+    height: 100%;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: 2%;
+  }
+  /* Question number display at the top of each question */
+  h3{
+    font-weight: 300;
+    margin: 0px;
+    padding: 10px;
+    font-size: 20px;
+    /* background-color: #444; */
+    color: #fff;
+  }
+  /* Actual question text */
+  .question{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-left: 30px;
+  }
+  /* Text for the answer choices */
+  .answers {
+    margin-bottom: 20px;
+    text-align: left;
+    display: inline-block;
+    /* word-wrap: break-word; */
+  }
+  .answers label{
+    display: block;
+    font-weight: normal;
+    margin-bottom: 10px;
+    padding-left: 40px;
+    display: inline-block;
+  }
+  .title {
+    font-weight: bold;
+    font-size: 16px;
+    background-color: white;
+  }
+  /* Button to navigate to the previous question */
+  #previous {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    background-color: #006bb3;
+    color: #fff;
+    border: 0px;
+    border-radius: 3px;
+    padding-right: 15px;
+    position: absolute;
+    bottom: 0px; /*positioned at bottom of screen*/
+    right: 17%; /* positioned 15% right of the screen. Stays left of the nav button */
+    cursor: pointer;
+  }
+  #previous:hover{
+    color:yellow;
+  }
+  #navigation {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    background-color: #006bb3;
+    color: #fff;
+    border-left: 2px solid white ; 
+    border-right: 2px solid white;
+    border-top: none;
+    border-bottom: none;
+    height: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
+    position: absolute;
+    bottom: 0px; /*positioned at bottom of screen*/
+    right: 9%; /* positioned 10% right of the screen. Stays left of the next button */
+    cursor: pointer;
+  }
+  #navigation:hover{
+    color:yellow;
+  }
+  /* Button to navigate to the next question */
+  #next {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    background-color: #006bb3;
+    color: #fff;
+    border: 0px;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 0px; /*positioned at bottom of screen*/
+    right: 1%; /*positioned 1% from right of screen. */
+    cursor: pointer;
+  }
+  #next:hover{
+    color:yellow;
+  }
+  /*Button to submit and check answers*/
+  #submit{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    background-color: #006bb3;
+    color: #fff;
+    border: 0px;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 0px;
+    right: 90%;
+    cursor: pointer;
+  }
+  #submit:hover{
+    color: yellow;
+  }
+  /* Displays # questions correct */
+  #results {
+    float: left;
+    margin-top: 60%;
+  }
+  /* the question slides are made invisible */
+  .slide{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  /* the active question slide is visible */
+  .active-slide{
+    opacity: 1;
+    z-index: 2;
+  }
+  .quiz-container{
+    position: relative;
+    height: 200px;
+    margin-top: 40px;
+  }
+  .passage {
+    height: 95%; 
+    width: 100%; 
+    overflow:auto;
+    padding-bottom: 5px;
+    padding-right: 10px;
+  }
+  /* The dropdown options to either highlight or remove highlight */
+  #yeshighlight, #nohighlight {
+    background-color: #006bb3;
+    color: white;
+    border-radius: 0px;
+    border-color: #006bb3;
+  }
+  .dropdown-menu{
+    background-color:#006bb3;
+  }
+
+  .controls {
+    /* display: flex; */
+    justify-content: space-between;
+    display: inline;
+    /* float: right; */
+  }
+
+  .buttonPlay{
+    cursor: pointer;
+    padding: 0;
+    border: black;
+    fill: black;
+    margin: 0;
+    outline: none;
+    display: inline-block; 
+    position: relative;
+    left:0%;
+    top: 2%;
+    /* float: left; */
+  }  
+
+  .buttonReset {
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    background: white;
+    padding: 0;
+    /* border-right: 10px white; */
+    margin: 0;
+    outline-width: 10px;
+    display: inline-block;
+    font-size: 13px;
+    position: relative;
+    left:0%;
+    top: 0%;
+} 
+
+  #playButton {
+    display: block;
+  }
+
+  #pauseButton {
+    display: none;
+  }
+  .flag{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  /* the active question slide is visible */
+  .active-flag{
+    opacity: 1;
+    z-index: 3;
+  }
+  .overlay { 
+    height: 50%; 
+    width: 80%; 
+    display: none; 
+    position: absolute; 
+    top: 30%; 
+    left: 10%; 
+    right: 10%;
+    bottom: 10%;
+    background-color: #006bb3; 
+    z-index: 5;
+  }  
+
+  .overlay-content { 
+    position: absolute; 
+    top: 40px; 
+    left: 1%;
+    right: 1%;
+    bottom: 1%;
+    width: 100%; 
+    text-align: center; 
+  } 
+  
+  table{
+    background-color: white;
+    position:relative;
+    width: 98%;
+    height:98%;
+  }
+  table, th, td {
+    padding: 1%;
+    border: 1px solid lightgray; 
+    border-collapse: collapse;
+    border-spacing: 5px;
+    
+  }
+  #tablecol1{
+    padding-left: 5px;
+  }
+  th, td{
+    text-align: center;
+  }
+  table:after{
+    /* overflow:hidden; */
+    content:'';
+    clear:both;
+    display:block;
+  }
+  tr:hover{
+    background-color: yellow;
+  }
+  .overlay a { 
+    /* padding: 10px;  */
+    text-decoration: none; 
+    /* font-size: 15px;  */
+    color: black; 
+    display: block; 
+    /* transition: 0.3s;  */
+  } 
+
+  .overlay a:hover, 
+  .overlay a:focus { 
+    color: blue; 
+    text-decoration: underline;
+  } 
+
+  .overlay .closebtn { 
+    position: absolute; 
+    top: 0%; 
+    right: 0%; 
+    font-size: 20px; 
+  } 
+  /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+  @media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+    }
+  }
+  #navflagged-true{
+    opacity: 1;
+  }
+  #navflagged-false{
+    opacity: 0;
+  }
+  
+</style>
+</head>
+<body>
+<div>
+<div id="main">
+  <h1>Medical College Admission Test</h1>
+  <!-- <button class="timer">Timer</button> -->
+  <div class="timer" style="text-align:end;">Timer: 
+    <!-- Buttons for controlling timer -->
+    <div class="controls">
+      <!-- Reset button separate -->
+      <button class="buttonReset" id="resetButton"> Reset </button>
+      <!--pause button shows up in same location as start button once timer has started -->
+      <div class="buttonPlay" > 
+        <button class="fa fa-play" id=playButton style="color: black;"></button>
+        <button class="fa fa-pause" id=pauseButton style="color: black;"></button>
+      </div>
+    </div>
+    <span id="time">00:00:00</span></div>
+        <script>
+          function timeToString(time) {
+            let diffInHrs = time / 3600000;
+            let hh = Math.floor(diffInHrs);
+
+            let diffInMin = (diffInHrs - hh) * 60;
+            let mm = Math.floor(diffInMin);
+
+            let diffInSec = (diffInMin - mm) * 60;
+            let ss = Math.floor(diffInSec);
+
+            let diffInMs = (diffInSec - ss) * 100;
+            let ms = Math.floor(diffInMs);
+
+            let formattedHH = hh.toString().padStart(2, "0");
+            let formattedMM = mm.toString().padStart(2, "0");
+            let formattedSS = ss.toString().padStart(2, "0");
+            let formattedMS = ms.toString().padStart(2, "0");
+
+            return `${formattedHH}:${formattedMM}:${formattedSS}`;
+          }
+
+          // Declare variables to use in our functions below
+          let startTime;
+          let elapsedTime = 0;
+          let timerInterval;
+
+          // Create function to modify innerHTML
+          function print(txt) {
+            document.getElementById("time").innerHTML = txt;
+          }
+
+          // Create "start", "pause" and "reset" functions
+          function start() {
+            startTime = Date.now() - elapsedTime;
+            timerInterval = setInterval(function printTime() {
+              elapsedTime = Date.now() - startTime;
+              print(timeToString(elapsedTime));
+            }, 10);
+            showButton("PAUSE");
+          }
+
+          function pause() {
+            clearInterval(timerInterval);
+            showButton("PLAY");
+          }
+
+          function reset() {
+            clearInterval(timerInterval);
+            print("00:00:00");
+            elapsedTime = 0;
+            showButton("PLAY");
+          }
+
+          // Create function to display buttons
+          function showButton(buttonKey) {
+            const buttonToShow = buttonKey === "PLAY" ? playButton : pauseButton;
+            const buttonToHide = buttonKey === "PLAY" ? pauseButton : playButton;
+            buttonToShow.style.display = "block";
+            buttonToHide.style.display = "none";
+          }
+          
+          // Create event listeners
+          let playButton = document.getElementById("playButton");
+          let pauseButton = document.getElementById("pauseButton");
+          let resetButton = document.getElementById("resetButton");
+
+          playButton.addEventListener("click", start);
+          pauseButton.addEventListener("click", pause);
+          resetButton.addEventListener("click", reset);
+        </script>
+
+  <!-- second row bar buttons under "btn-group" class -->
+  <div class="btn-group" style="width:100%">
+    <!-- highlight button and dropdown options -->
+    <div class="btn-group dropdown" style="width: 12%">
+      <button type="button" class="btn btn-primary dropdown-toggle" style="width: 20%; height: 34px; margin-left: 0px; background-color: yellow; padding-left: 10px;" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false" id="indicator">
+        <span class="caret" style="color: black;"></span>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item " id= "yeshighlight" type="button">Highlight</button>
+        <button class="dropdown-item"  id= "nohighlight" type="button">Remove Highlight</a>
+      </div>
+      <button type="button" class="btn btn-primary" style="width: 80%;" id= "highlight">Highlight</button>
+    </div>
+    <!-- strikethrough button  -->
+    <button id= "strikethrough" style="width:12%">Strikethrough</button>
+    <!-- watch passage analysis button -->
+    <button style="width:63.5%">Watch Passage Analysis</button>
+    <!-- flag for review button -->
+    <button style="width:12.5%; text-align: right;" id= "flag"><i class="fa fa-flag" id="marker" style="color: white; font-weight: bold;"></i> Flag for Review</button>
+  </div>
+
+  <!-- Everything below the menu options  -->
+  <div class="jumbotron" style="margin-top: 0px; padding: 0px;">
+    <div id="myNav" class="overlay"> 
+      <a href="javascript:void(0)" class="closebtn" id="exit">×</a> 
+      <h4 style="background-color: #006bb3; color: white; padding-left:10px; padding-top: 5px; padding-bottom: 3px; border-bottom: 2px solid white;">Navigation - Select a question to go to it</h4>
+      <div class="overlay-content"> 
+        <table id="myTable">
+          <tr style="background-color: #9AC8FD ; color:white">
+            <th id= "tablecol1">Question</th>
+            <th >Status</th>
+            <th >Flagged For Review</th>
+          </tr>
+          <tr> <td id="q1"><a class="dot">Question 1</a> </td> <td>xyz</td> <td><i class="fa fa-flag" id="navflagged-false" aria-hidden="true"></i></td> </tr>
+          <tr> <td id="q2"><a class="dot" >Question 2</a></td> <td>xyz</td> <td><i class="fa fa-flag" id="navflagged-false" aria-hidden="true"></i></td> </tr>
+          <tr> <td id="q3"><a class="dot" >Question 3</a></td> <td>xyz</td> <td><i class="fa fa-flag" id="navflagged-false" aria-hidden="true"></i></td> </tr>
+          <tr> <td id="q4"><a class="dot" >Question 4</a></td> <td>xyz</td> <td><i class="fa fa-flag" id="navflagged-false" aria-hidden="true"></i></td> </tr>
+          </table> 
+      </div> 
+   </div> 
+    <div class="row" style="background-color:#006bb3;">
+      <div class="column" style="background-color:white; margin-left: 33px; margin-right: 15px; border-color:#006bb3;">
+        <!-- Passage title -->
+        <h2>Deconstructionism and literature</h2>
+        <!-- The passage -->
+        <div class="passage">
+          <div>Deconstructionism, as applied to literary criticism, is a paradox about a paradox: It assumes that all discourse, even all historical narrative, is essentially disguised self-revelatory messages. Being subjective, the text has no fixed meaning, so when we read, we are prone to misread. Deconstructionism emerged from Paris and, notwithstanding its claim to universality, has an evident history. It is a manifestation of existential anxieties about presence and absence, reality and appearance. It developed via structuralism, with its emphasis on semantics and symbolism.</div>  
+          <br>
+          <div>From these sources it derived its fundamental premise: the endless slippage of the subject, the futility of any attempt to name reality. The premise suggests the disillusion attendant on the collapse of the two major forces in twentieth-century European thought: enlightened humanism and idealistic Marxism. Despite its origins, deconstructionism found its own best home in the United States, that historically dissociated construction of random meanings. (“America is deconstruction,” said its leading proponent, Jacques Derrida.)</div>
+          <br>
+          <div>By the 1970s, deconstruction filled—perhaps better, emptied—the gap left in the humanities in the U.S. by the demise of the old “new criticism.” But what began as brilliant and creative analytic performances soon became classroom pedagogy. Throughout the decade, the seminar rooms on U.S. campuses—and then campuses worldwide—became workshops in deconstructionist practice. Junior misreaders worked away, becoming ever more like C.I.A. operatives, decoding false signals sent by a distant enemy, the writer.</div>
+          <br>
+          <div>Deconstruction exalted itself with ever higher pretensions. As one academic critic exulted, “The history of literature is part of the history of criticism.” Deconstruction transformed everything into social commentary, easily making affinities with sexual and racial politics, two other militant philosophies that challenge the sanctity of text. It presented itself as a supra-ideological mode of analysis, exposing the ideological aberrations of others while seemingly possessing none itself.</div>
+          <br>
+          <div>Any resistance that deconstructionists encountered was usually interpreted as censorious ignorance. As their approach prevailed, gangs of neodeconstructionists descended on the library with their critical services. One would demythologize, another decanonize, another dephallicize, another dehegemonize, another defame. Literature, as the deconstructionists frequently proved, had been written by entirely the wrong people for entirely the wrong reasons. Soon all that would be left of it would be a few bare bones of undecidable discourse and some tattered leather bindings. This frenzy would be called a conference of the Modern Language Association.</div>
+          <br>
+          <div>The point that needs to be reaffirmed is that writing is an existential act, an imaginative exploration of ideas. It is, in fact, an expression of moral responsibility. Literature is not a subordinate category of social criticism. When writers are censored, imprisoned, killed, or threatened with death for their writings, it is not because their discourse is undecidable. If we are to take authors and their fate seriously, we must recognize that fiction is more than an opportunity for word games; we must honor it as a mode of radical discovery.</div>
+          <br>
+          <div>We need an ambiance around writing that affirms its nature as creativity, as art, and that in a larger sense considers creativity a prime power in the making of intelligence, feeling, and morality. This was the position from which Jean-Paul Sartre with his freedom-affirming existentialism started the postwar debate of which deconstruction is a latter-day development. He started it because during the 1930s the word had been defamed and disfigured, the book burned, the writer erased, by forces that lay outside criticism, in history.</div>
+          <br>
+          <div>Adapted from M. Bradbury, The scholar who misread history. ©1991 by New York Times.</div>
+        </div>
+      </div>
+      <div class="column2" style="margin-right: 10px;">
+        <div class="quiz-container">
+          <h3 class=q-num></h3>
+          <div id="quiz"></div>
+          
+        </div>
+        
+        <button id="previous">Previous Question</button>
+        <button id="navigation">Navigation</button>
+        <button id="next">Next Question</button>
+        <button id="submit">Submit Quiz</button>
+        <div id="results"></div>
+        
+        <script type="text/javascript"> 
+        (function(){
+          
+        // Functions
+          function buildQuiz(){
+            // variable to store the HTML output
+            const output = [];
+
+            // for each question...
+            myQuestions.forEach(
+              (currentQuestion, questionNumber) => {
+                
+                // variable to store the list of possible answers
+                const answers = [];
+                // and for each available answer...
+                for(letter in currentQuestion.answers){
+
+                  // ...add an HTML radio button
+                  answers.push(
+                    `<label>
+                      <input type="radio"  name="question${questionNumber}" value="${letter}">
+                      ${letter.toUpperCase().bold()}.
+                      ${currentQuestion.answers[letter]}
+                    </label>
+                    <br>`
+                  );
+                }
+                // add this question and its answers to the output
+                output.push(
+                  `<div class="slide" id="${questionNumber+1}">
+                    <div class="title"> ${"Question " + (questionNumber+1)} </div>
+                    <div class="question"> ${currentQuestion.question} </div>
+                    <div class="answers"> ${answers.join("")} </div>
+                  </div>`
+                );
+              }
+            );
+            // finally combine our output list into one string of HTML and put it on the page
+            quizContainer.innerHTML = output.join('');
+          }
+          
+          function showResults(){
+
+            // gather answer containers from our quiz
+            const answerContainers = quizContainer.querySelectorAll('.answers');
+
+            // keep track of user's answers
+            let numCorrect = 0;
+
+            // for each question...
+            myQuestions.forEach( (currentQuestion, questionNumber) => {
+
+              // find selected answer
+              const answerContainer = answerContainers[questionNumber];
+              const selector = `input[name=question${questionNumber}]:checked`;
+              const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+              // if answer is correct
+              if(userAnswer === currentQuestion.correctAnswer){
+                // add to the number of correct answers
+                numCorrect++;
+
+                // color the answers green
+                answerContainers[questionNumber].style.color = 'lightgreen';
+              }
+              // if answer is wrong or blank
+              else{
+                // color the answers red
+                answerContainers[questionNumber].style.color = 'red';
+              }
+            });
+
+            // show number of correct answers out of total
+            resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+          }
+
+          function showNavBar(){
+            //Boolean -- whether question is considered complete or not
+            var complete = ["Incomplete", "Incomplete", "Incomplete", "Incomplete", "Incomplete", "Incomplete"];
+            // var flags = [];
+            // for each question...
+            myQuestions.forEach( (currentQuestion, questionNumber) => {
+            
+              if(myQuestions[questionNumber].flagged == true ){
+                document.getElementById("myTable").rows[questionNumber+1].cells[2].innerHTML = '<i class="fa fa-flag" id="navflagged-true" aria-hidden="true">';
+              } else{
+                document.getElementById("myTable").rows[questionNumber+1].cells[2].innerHTML = '<i class="fa fa-flag" id="navflagged-false" aria-hidden="true">';
+              }
+
+              //find radios on page to check for completeness
+              var radios = document.getElementsByName(`question${questionNumber}`);
+
+              //if any option is selected, change boolean variable to 'true'
+              for (var i=0;i < radios.length; i++) {
+                if (radios[i].checked) {
+                  complete[questionNumber] = "Complete";
+                }
+              }
+            });
+            for (var i=1; i< 5; i++){
+              document.getElementById("myTable").rows[i].cells.item(1).innerHTML = `${complete[i-1]}`;
+            }
+          }
+
+          function showFlag(n){
+            currentFlag = n;
+            var unflagged = '<i class="fa fa-flag" id="marker" style="color: white; font-weight: bold;"></i> Flag for Review';
+            var flagged = '<i class="fa fa-flag" id="marker" style="color: yellow; font-weight: bold;"></i> Flag for Review';
+           
+            if(myQuestions[n].flagged == true){
+              document.getElementById("flag").innerHTML = flagged;
+            }
+            else {
+              document.getElementById("flag").innerHTML = unflagged;
+            }
+          }
+
+          function flagUpdater(currentColor){
+            if(currentColor == "yellow"){
+              myQuestions[currentFlag].flagged = true;
+            } else{
+              myQuestions[currentFlag].flagged = false;
+            }
+          }
+
+          function showNextFlag(currentColor) {
+            if(currentColor == "yellow"){
+              myQuestions[currentFlag].flagged = true;
+            } else{
+              myQuestions[currentFlag].flagged = false;
+            }
+            showFlag(currentFlag + 1);
+          }
+          function showPreviousFlag(currentColor) {
+            if(currentColor == "yellow"){
+              myQuestions[currentFlag].flagged = true;
+            } else{
+              myQuestions[currentFlag].flagged = false;
+            }
+            showFlag(currentFlag - 1);
+          }
+
+          function moveFlagBack(){
+            showFlag(currentFlag - 1);
+          }
+          function moveFlagForward() {
+            showFlag(currentFlag + 1);
+          }
+
+          function showSlide(n) {
+            slides[currentSlide].classList.remove('active-slide');
+            slides[n].classList.add('active-slide');
+            currentSlide = n;
+            if(currentSlide === 0){
+              previousButton.style.display = 'none';
+            }
+            else{
+              previousButton.style.display = 'inline-block';
+            }
+            if(currentSlide === slides.length-1){
+              nextButton.style.display = 'none';
+              submitButton.style.display = 'inline-block';
+            }
+            else{
+              nextButton.style.display = 'inline-block';
+              submitButton.style.display = 'none';
+            }
+          }
+
+          function showNextSlide() {
+            showSlide(currentSlide + 1);
+          }
+
+          function showPreviousSlide() {
+            showSlide(currentSlide - 1);
+          }
+
+
+          // gets safe range of user's selection
+          function getSafeRanges(dangerous) {
+            var a = dangerous.commonAncestorContainer;
+            // Starts -- Work inward from the start, selecting the largest safe range
+            var s = new Array(0), rs = new Array(0);
+            if (dangerous.startContainer != a){
+                for(var i = dangerous.startContainer; i != a; i = i.parentNode)
+                    s.push(i)
+            }
+            if (0 < s.length) for(var i = 0; i < s.length; i++) {
+                var xs = document.createRange();
+                if (i) {
+                    xs.setStartAfter(s[i-1]);
+                    xs.setEndAfter(s[i].lastChild);
+                }
+                else {
+                    xs.setStart(s[i], dangerous.startOffset);
+                    xs.setEndAfter(
+                        (s[i].nodeType == Node.TEXT_NODE)
+                        ? s[i] : s[i].lastChild
+                    );
+                }
+                rs.push(xs);
+            }
+
+            // Ends -- basically the same code reversed
+            var e = new Array(0), re = new Array(0);
+            if (dangerous.endContainer != a){
+                for(var i = dangerous.endContainer; i != a; i = i.parentNode)
+                    e.push(i)
+            }
+            if (0 < e.length) for(var i = 0; i < e.length; i++) {
+                var xe = document.createRange();
+                if (i) {
+                    xe.setStartBefore(e[i].firstChild);
+                    xe.setEndBefore(e[i-1]);
+                }
+                else {
+                    xe.setStartBefore(
+                        (e[i].nodeType == Node.TEXT_NODE)
+                        ? e[i] : e[i].firstChild
+                    );
+                    xe.setEnd(e[i], dangerous.endOffset);
+                }
+                re.unshift(xe);
+            }
+
+            // Middle -- the uncaptured middle
+            if ((0 < s.length) && (0 < e.length)) {
+                var xm = document.createRange();
+                xm.setStartAfter(s[s.length - 1]);
+                xm.setEndBefore(e[e.length - 1]);
+            }
+            else {
+                return [dangerous];
+            }
+
+            // Concat
+            rs.push(xm);
+            response = rs.concat(re);    
+
+            // Send to Console
+            return response;
+          }
+          //calls highlight fnxn on the entire user selection
+          function highlightSelection() {
+            var userSelection = window.getSelection().getRangeAt(0);
+            var safeRanges = getSafeRanges(userSelection);
+            for (var i = 0; i < safeRanges.length; i++) {
+                highlightRange(safeRanges[i]);
+            }
+          }
+          //highlights selection 
+          function highlightRange(range) {
+            var newNode = document.createElement("div");
+            //if toggle is on yellow/highlight, then make node's background yellow
+            if (document.getElementById("indicator").style.backgroundColor == "yellow") {
+              newNode.style.backgroundColor = 'yellow'; 
+              newNode.style.display = 'inline';
+            }
+            //if toggle is on white/remove highlight, then make node's background white
+            if (document.getElementById("indicator").style.backgroundColor == "white") {
+              newNode.style.backgroundColor = 'white'; 
+              newNode.style.display = 'inline';
+            }
+            //changes background color of selection
+            range.surroundContents(newNode);
+          }
+          //makes toggle box color yellow to highlight
+          function highlightAdder(){
+            document.getElementById("indicator").style.backgroundColor = "yellow";
+          }
+          //makes toggle box color white to remove highlight
+          function highlightRemover(){
+            document.getElementById("indicator").style.backgroundColor = "white";
+          }
+          //calls strike function on entire user selection
+          function strikeSelection() {
+            var userSelection = window.getSelection().getRangeAt(0);
+            var safeRanges = getSafeRanges(userSelection);
+            for (var i = 0; i < safeRanges.length; i++) {
+                strikeRange(safeRanges[i]);
+            }
+          }
+          //strikes selection. Unstrikes if it is already striked
+          function strikeRange(range) {
+            document.designMode = "on";
+            document.execCommand("strikeThrough", false, range)
+            document.designMode = "off";
+          }
+          
+          //returns current color of flag marker when called
+          function flagStatus(){
+            return document.getElementById("marker").style.color;
+          }
+
+          function flagColor() {
+            var mark = flagStatus();
+            if (mark == "yellow") {
+                document.getElementById("marker").style.color = "white";
+            } else {
+                document.getElementById("marker").style.color = "yellow";
+            }
+          }
+         
+          function completion(){
+            var table = document.getElementById("myTable");
+            var x = document.getElementById("myTable").rows.length;
+        
+            for (var i = 1; i < x; i++) {
+              var el = document.getElementById("myTable").rows[i].cells[1];
+              if (el.innerHTML == `Incomplete`){
+                el.innerHTML = '<span style="color:red;">Incomplete</span>';
+              }
+            }
+          }
+
+          /* Open */
+          function openNav() {
+            document.getElementById("myNav").style.display = "block";
+            showNavBar();
+            completion();
+          }
+
+          /* Close */
+          function closeNav() {
+            document.getElementById("myNav").style.display = "none";
+          }
+
+          
+
+          // Variables
+          const quizContainer = document.getElementById('quiz');
+          const resultsContainer = document.getElementById('results');
+          const navContainer = document.getElementById('overlay-content');
+          const submitButton = document.getElementById('submit');
+          const questionTitle = document.getElementById('q-num');
+          const highlightButton = document.getElementById("highlight");
+          const strikeButton = document.getElementById("strikethrough");
+          const removeHighlight = document.getElementById("nohighlight");
+          const addHighlight = document.getElementById("yeshighlight");
+          const flaggedForReview = document.getElementById("flag");
+          const nav = document.getElementById("navigation");
+          const exit = document.getElementById("exit");
+
+          //Navigation question Variables
+          const quest1 = document.getElementById("q1");
+          const quest2 = document.getElementById("q2");
+          const quest3 = document.getElementById("q3");
+          const quest4 = document.getElementById("q4");
+          const quest5 = document.getElementById("q5");
+          const quest6 = document.getElementById("q6");
+          //
+          const myQuestions = [
+          {
+          question: "Which of the following statements best expresses the passage author’s message?",
+          answers: {
+          a: "The true meaning of texts can never be decided.",
+          b: "Most literary criticism is now deconstructionism.",
+          c: "Deconstructionist and existentialist critics compete.",
+          d: "The most salient issue for literary critics should be creative merit."
+          },
+          correctAnswer: "d",
+          flagged:false 
+          },
+          {
+          question: "The passage implies that the declaration “America is deconstruction” (paragraph 2) means that:",
+          answers: {
+          a: "the constant revisions typical of U.S. culture capture the spirit of deconstructionism.",
+          b: "literature produced in the U.S. is especially suited to analysis by deconstruction.",
+          c: "U.S. literary critics developed the scholarly methods adopted by deconstructionism.",
+          d: "U.S. higher education is controlled by the political agenda of deconstructionism."
+          },
+          correctAnswer: "a",
+          flagged:false 
+          },
+          {
+          question: "According to the views of the passage author, a responsible review of a stage production of Shakespeare's Julius Caesar would probably:",
+          answers: {
+          a: "point out evidence that the play promoted the interests of Shakespeare's gender and class.",
+          b: "argue that Shakespeare distorted history unintentionally because of his limited knowledge.",
+          c: "assume that Shakespeare's presentation of events reflected his artistic sensibility.",
+          d: "recommend the play as an entertaining introduction to Roman history."
+          },
+          correctAnswer: "c",
+          flagged:false 
+          },
+          {
+          question: "What is the author’s primary purpose in discussing deconstructionism in paragraphs 3, 4, and 5",
+          answers: {
+          a: "To denounce its triviality in order to strengthen the case for a contrasting vision",
+          b: "To acknowledge its existentialist principles in order to propose an extension of these principles",
+          c: "To reveal its lack of sympathy for writers as an argument for a more courteous manner by critics",
+          d: "To contrast its analytic method with an evaluative approach that may prove equally interesting"
+          },
+          correctAnswer: "a",
+          flagged:false 
+          }
+          
+          ];
+
+          // Kick things off
+          buildQuiz();
+
+          // Pagination
+          const previousButton = document.getElementById("previous");
+          const nextButton = document.getElementById("next");
+          const slides = document.querySelectorAll(".slide");
+          const flags = document.querySelectorAll(".flag");
+          let currentFlag = 0;
+          let currentSlide = 0;
+
+
+          // Show the first slide
+          showSlide(currentSlide);
+          showFlag(currentFlag);
+
+          // Event listeners
+          submitButton.addEventListener('click', showResults);
+          previousButton.addEventListener("click", () => {
+            var currentColor = flagStatus();
+            showPreviousFlag(currentColor);
+            showPreviousSlide();
+            });
+          nextButton.addEventListener("click", () => {
+            var currentColor = flagStatus();
+            showNextFlag(currentColor);
+            showNextSlide();
+          });
+          highlightButton.addEventListener("click", highlightSelection);
+          strikeButton.addEventListener("click", strikeSelection);
+          removeHighlight.addEventListener("click", highlightRemover);
+          addHighlight.addEventListener("click", highlightAdder);
+          flaggedForReview.addEventListener("click", flagColor);
+          nav.addEventListener("click", () => {
+            var currentColor = flagStatus();
+            flagUpdater(currentColor);
+            openNav();
+          });
+
+          exit.addEventListener("click", closeNav);
+          
+       
+          quest1.addEventListener("click", function(){
+            var x = document.getElementsByClassName("active-slide")[0].id;
+            var dif = x-1; //x minus slide u are tryna get to
+            for(i=0; i<dif; i++){
+              showPreviousSlide();
+              // showPreviousFlag();
+              moveFlagBack();
+            }
+            closeNav();
+          });
+          quest2.addEventListener("click", function(){
+            var x = document.getElementsByClassName("active-slide")[0].id;
+            var dif = Math.abs(x-2); //x minus slide u are tryna get to
+            if(x>2){
+              for(i=0; i<dif; i++){
+              showPreviousSlide();
+              moveFlagBack();
+              }
+              closeNav();
+            } else if (x<2){
+              for(i=0; i<dif; i++){
+                showNextSlide();
+                moveFlagForward();
+              }
+              closeNav();
+            }
+            else{
+              closeNav();
+            }
+          });
+          quest3.addEventListener("click", function(){
+            var x = document.getElementsByClassName("active-slide")[0].id;
+            var dif = Math.abs(x-3); //x minus slide u are tryna get to
+            if(x>3){
+              for(i=0; i<dif; i++){
+              showPreviousSlide();
+              moveFlagBack();
+              }
+              closeNav();
+            } else if (x<3){
+              for(i=0; i<dif; i++){
+                showNextSlide();
+                moveFlagForward();
+              }
+              closeNav();
+            }
+            else{
+              closeNav();
+            }
+          });
+          quest4.addEventListener("click", function(){
+            var x = document.getElementsByClassName("active-slide")[0].id;
+            var dif = Math.abs(x-4); //x minus slide u are tryna get to
+            if(x>4){
+              for(i=0; i<dif; i++){
+              showPreviousSlide();
+              moveFlagBack();
+              }
+              closeNav();
+            } else if (x<4){
+              for(i=0; i<dif; i++){
+                showNextSlide();
+                moveFlagForward();
+              }
+              closeNav();
+            }
+            else{
+              closeNav();
+            }
+          });
+          quest5.addEventListener("click", function(){
+            var x = document.getElementsByClassName("active-slide")[0].id;
+            var dif = Math.abs(x-5); //x minus slide u are tryna get to
+            if(x>5){
+              for(i=0; i<dif; i++){
+              showPreviousSlide();
+              moveFlagBack();
+              }
+              closeNav();
+            } else if (x<5){
+              for(i=0; i<dif; i++){
+                showNextSlide();
+                moveFlagForward();
+              }
+              closeNav();
+            }
+            else{
+              closeNav();
+            }
+          });
+          quest6.addEventListener("click", function(){
+            var x = document.getElementsByClassName("active-slide")[0].id;
+            var dif = Math.abs(x-6); //x minus slide u are tryna get to
+            if(x>6){
+              for(i=0; i<dif; i++){
+              showPreviousSlide();
+              moveFlagBack();
+              }
+              closeNav();
+            } else if (x<6){
+              for(i=0; i<dif; i++){
+                showNextSlide();
+                moveFlagForward();
+              }
+              closeNav();
+            }
+            else{
+              closeNav();
+            }
+          });
+        })();
+        </script>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
